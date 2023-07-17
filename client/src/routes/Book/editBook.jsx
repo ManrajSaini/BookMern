@@ -5,7 +5,7 @@ import NoImageSelected from "../../assets/no-image-selected.jpg";
 function editBook() {
   const navigate = useNavigate();
   const urlSlug = useParams();
-  const baseUrl = `http://localhost:8000/api/books/${urlSlug.slug}`;
+  const baseUrl = `https://mernbook-7sa2.onrender.com/api/books/${urlSlug.slug}`;
 
   const [bookId, setBookId] = useState("");
   const [title, setTitle] = useState("");
@@ -57,7 +57,7 @@ function editBook() {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/api/books", {
+      const response = await fetch("https://mernbook-7sa2.onrender.com/api/books", {
         method: "PUT",
         body: formData,
       });
@@ -90,7 +90,7 @@ function editBook() {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/api/books/" + bookId,
+        "https://mernbook-7sa2.onrender.com/api/books/" + bookId,
         {
           method: "DELETE",
         }
@@ -128,7 +128,7 @@ function editBook() {
               <img src={`${image}`} alt="preview image" />
             ) : (
               <img
-                src={`http://localhost:8000/uploads/${thumbnail}`}
+                src={`https://mernbook-7sa2.onrender.com/uploads/${thumbnail}`}
                 alt="preview image"
               />
             )}

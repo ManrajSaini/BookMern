@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 function singleBook() {
   const [data, setData] = useState([]);
   const urlSlug = useParams();
-  const baseUrl = `http://localhost:8000/api/books/${urlSlug.slug}`;
+  const baseUrl = `https://mernbook-7sa2.onrender.com/api/books/${urlSlug.slug}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +41,7 @@ function singleBook() {
 
     <div className="bookdetails">
       <div className="col-1">
-        <img src={`http://localhost:8000/uploads/${data?.thumbnail}`}
+        <img src={`https://mernbook-7sa2.onrender.com/uploads/${data?.thumbnail}`}
         alt={data?.title} />
         <Link to={`/editbook/${data.slug}`}>Edit</Link>
       </div>
