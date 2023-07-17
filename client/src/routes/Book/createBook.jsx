@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NoImageSelected from "../../assets/no-image-selected.jpg";
 
+import { auth } from "../login/firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
+
 function createBook() {
+  const [user, setUser] = useState(null);
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [stars, setStars] = useState(0);
@@ -11,7 +16,21 @@ function createBook() {
   const [submitted, setSubmitted] = useState("");
   const [image, setImage] = useState(NoImageSelected)
 
+  const getUser = () => {
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log(user.email);
+                setUser(user);
+            }
+        });
+    };
+
+    useEffect(() => {
+        getUser();
+    }, []);
+
   const createBook = async (e) => {
+
     e.preventDefault();
     console.table([title, slug]);
 
@@ -23,6 +42,7 @@ function createBook() {
     formData.append("description", description);
     formData.append("category", categories);
     formData.append("thumbnail", thumbnail);
+    //formData.append("user", user ? user.email : "");
 
     try {
 

@@ -7,6 +7,7 @@ import CreateBook from "./routes/Book/createBook";
 import EditBook from "./routes/Book/editBook";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import LogIn from "./routes/login/login"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={ <Home/> } />
           <Route path="/about" element={ <About/> } />
           <Route path="/books" element={ <Book/> } />
+          <Route path="/login" element={ <LogIn/> } />
           <Route path="/books/:slug" element={ <SingleBook/> } />
           <Route path="/createbook" element={ <CreateBook/> } />
           <Route path="/editbook/:slug" element={ <EditBook/> } />
